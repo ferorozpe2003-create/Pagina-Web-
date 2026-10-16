@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernanda Muñoz Orozpe - Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #e0d1d4;
+    --pink-deep: #b0969f;
+    --mint: #ccd9d1;
+    --mint-deep: #8ea59b;
+    --lavender: #d3d2de;
+    --lavender-deep: #8a869f;
+    --sky: #cbd7de;
+    --cream: #e9e8e0;
+    --ink: #4a4752;        /* texto principal */
+    --ink-soft: #77747f;   /* texto secundario */
+    --glass: rgba(233, 232, 224, 0.84);
+    --line: rgba(110, 112, 125, 0.30);
+    --shadow: 0 10px 30px rgba(50, 55, 65, 0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--lavender);
+    background-image:
+      linear-gradient(rgba(196,203,200,0.50), rgba(170,182,185,0.50)),
+      url("tobo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  ::selection { background: var(--pink-deep); color: #fff; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--ink); }
+
+  /* NAV */
+  .topnav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: .5rem;
+    padding: .8rem 1rem;
+    background: rgba(233,232,224,0.78);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .btn {
+    font-family: 'Jost', sans-serif; font-size: .85rem; letter-spacing: .06em;
+    padding: .5rem 1.2rem; border-radius: 999px;
+    border: 1px solid var(--lavender-deep);
+    background: var(--cream); color: var(--ink);
+    text-decoration: none; cursor: pointer; display: inline-block;
+    transition: transform .2s ease, background-color .2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); background: var(--lavender); }
+  .btn-pink { background: var(--pink); border-color: var(--pink-deep); }
+  .btn-pink:hover { background: var(--pink-deep); color: #fff; }
+  .btn-mint { background: var(--mint); border-color: var(--mint-deep); }
+  .btn-mint:hover { background: var(--mint-deep); color: #fff; }
+
+  /* LAYOUT */
+  main { max-width: 62rem; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; display: grid; gap: 1.8rem; }
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 2rem 2.2rem;
+    backdrop-filter: blur(6px);
+  }
+  .card h2 { font-size: 1.9rem; margin-bottom: .3rem; }
+  .card .sub { color: var(--ink-soft); font-size: .92rem; margin-bottom: 1.3rem; }
+  section[id] { scroll-margin-top: 5rem; }
+
+  /* PRESENTACIÓN */
+  .hero { display: flex; gap: 2.2rem; align-items: center; flex-wrap: wrap; }
+  .avatar {
+    width: 12rem; height: 12rem; border-radius: 50%; padding: 6px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--pink-deep), var(--lavender-deep), var(--mint-deep));
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid var(--cream); }
+  .hero-text { flex: 1; min-width: 16rem; }
+  .hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: .6rem; }
+  .hero-text p { opacity: .92; }
+  .quote { margin-top: .8rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--lavender-deep); }
+  .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.2rem; margin-top: 1.8rem; }
+  .info {
+    padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--line);
+  }
+  .info:nth-child(1) { background: var(--pink); }
+  .info:nth-child(2) { background: var(--mint); }
+  .info h3 { font-size: 1.3rem; margin-bottom: .3rem; }
+  .info p, .info li { font-size: .95rem; }
+  .info ul { list-style: none; }
+  .info a { color: var(--ink); text-underline-offset: 3px; }
+
+  .socials { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.4rem; }
+
+  /* HOBBIES */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.2rem; }
+  figure { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
+  figure img, figure video { width: 100%; height: 200px; object-fit: cover; display: block; }
+  figcaption { padding: .7rem 1rem; font-size: .9rem; color: var(--ink-soft); }
+
+  /* CRIPTOGRAFÍA */
+  .crypto { display: grid; gap: 1.2rem; }
+  .crypto article { padding: 1.3rem 1.5rem; border-radius: 16px; border: 1px solid var(--line); }
+  .crypto article:nth-child(1) { background: var(--lavender); }
+  .crypto article:nth-child(2) { background: var(--sky); }
+  .crypto article:nth-child(3) { background: var(--pink); }
+  .crypto h3 { font-size: 1.35rem; margin-bottom: .3rem; }
+  .crypto p { font-size: .95rem; }
+
+  footer { text-align: center; padding: 1.4rem; font-size: .8rem; letter-spacing: .08em; color: var(--ink); background: rgba(233,232,224,.78); border-top: 1px solid var(--line); }
+
+  @media (max-width: 600px) {
+    .card { padding: 1.5rem 1.3rem; }
+    .hero-text h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="btn" href="#inicio">Inicio</a>
+  <a class="btn" href="#formacion">Formación</a>
+  <a class="btn" href="#hobbies">Hobbies</a>
+  <a class="btn" href="#cripto">Criptografía</a>
+  <a class="btn" href="#contacto">Contacto</a>
+</nav>
+
+<main>
+
+  <!-- PANTALLA DE PRESENTACIÓN -->
+  <section id="inicio" class="card">
+    <div class="hero">
+      <div class="avatar">
+        <img src="foto.jpg" alt="Fernanda Muñoz Orozpe"
+             onerror="this.onerror=null;this.src='https://placehold.co/300x300/b0969f/e9e8e0?text=FM'">
+      </div>
+      <div class="hero-text">
+        <h1>Fernanda Muñoz Orozpe</h1>
+        <p>Desarrolladora web, creadora de experiencias digitales y habitante ocasional de espacios liminales. Me gusta transformar ideas abstractas y nostálgicas en interfaces funcionales y atmosféricas.</p>
+        <p class="quote">"Todo lo que ves aquí ya existía antes de que abrieras esta pestaña en tu navegador."</p>
+        <div class="actions">
+          <a class="btn btn-pink" href="cv.pdf" download>Descargar mi CV (PDF)</a>
+          <a class="btn btn-mint" href="llave_publica.pem" download>Mi llave Pública</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info" id="formacion">
+        <h3>Formación Académica</h3>
+        <ul>
+          <li>[Carrera / Licenciatura] — [Institución], [años]</li>
+          <li>[Bachillerato o estudios previos] — [Institución]</li>
+        </ul>
+      </div>
+      <div class="info" id="contacto">
+        <h3>Correo electrónico</h3>
+        <p><a href="mailto:tucorreo@ejemplo.com">tucorreo@ejemplo.com</a></p>
+      </div>
+    </div>
+
+    <div class="socials" aria-label="Redes sociales">
+      <a class="btn" href="#" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section id="hobbies" class="card">
+    <h2>Hobbies</h2>
+    <p class="sub">Las cosas que me hacen feliz fuera del código.</p>
+    <div class="gallery">
+      <figure>
+        <img src="hobby1.jpg" alt="Hobby 1"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0d1d4/4a4752?text=Hobby+1'">
+        <figcaption>[Describe tu hobby 1]</figcaption>
+      </figure>
+      <figure>
+        <img src="hobby2.jpg" alt="Hobby 2"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x400/ccd9d1/4a4752?text=Hobby+2'">
+        <figcaption>[Describe tu hobby 2]</figcaption>
+      </figure>
+      <figure>
+        <img src="hobby3.jpg" alt="Hobby 3"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x400/d3d2de/4a4752?text=Hobby+3'">
+        <figcaption>[Describe tu hobby 3]</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ACERCA DE CRIPTOGRAFÍA -->
+  <section id="cripto" class="card">
+    <h2>Acerca de Criptografía</h2>
+    <p class="sub">Un vistazo a la historia del algoritmo RSA.</p>
+    <div class="crypto">
+      <article>
+        <h3>El algoritmo</h3>
+        <p>RSA es un algoritmo de criptografía de llave pública: cada persona tiene una llave pública, que puede compartir, y una llave privada, que guarda en secreto. Su seguridad se apoya en lo difícil que es factorizar números enteros muy grandes.</p>
+      </article>
+      <article>
+        <h3>Sus creadores</h3>
+        <p>Fue descrito en 1977 por Ron Rivest, Adi Shamir y Leonard Adleman, del MIT; el nombre RSA viene de sus apellidos.</p>
+      </article>
+      <article>
+        <h3>Un evento importante</h3>
+        <p>En 1997 se hizo público que Clifford Cocks, del GCHQ británico, había llegado a un esquema equivalente en 1973, pero su trabajo se mantuvo clasificado durante más de dos décadas.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Fernanda Muñoz Orozpe. Todos los derechos reservados.</footer>
+
+</body>
+</html>
